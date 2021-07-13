@@ -16,6 +16,11 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
+    @RequestMapping("/myIndex")
+    public String myIndex(){
+        return "myIndex";
+    }
+
     /**
      * mybatis查询
      */

@@ -24,5 +24,5 @@ public class ScheduledTasks {
     }
 
     //Spring自带的定时任务不支持集群
-    //大型项目通常使用分布式定时任务框架，例如：Xxl-job，Elastic-job（基于quartz 二次开发之后的分布式调度解决方案）
+    //大型项目通常使用分布式定时任务框架，例如：xxl-job，elastic-job（基于quartz 二次开发之后的分布式调度解决方案）
 }

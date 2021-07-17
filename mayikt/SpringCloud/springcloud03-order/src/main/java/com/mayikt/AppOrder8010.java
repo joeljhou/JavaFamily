@@ -7,10 +7,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 //开启eurekaClient客户端 将服务注册到eureak服务端
 @EnableEurekaClient
 @SpringBootApplication
-public class AppMember {
+public class AppOrder8010 {
 
     public static void main(String[] args) {
-        SpringApplication.run(AppMember.class, args);
+        SpringApplication.run(AppOrder8010.class, args);
     }
 
 }

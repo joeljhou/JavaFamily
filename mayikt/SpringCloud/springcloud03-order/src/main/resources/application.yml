@@ -1,0 +1,16 @@
+server:
+  port: 8010
+spring:
+  application:
+    #配置全局应用名称
+    name: app-mayikt-order
+eureka:
+  #客户端
+  client:
+    service-url:
+      #注册地址
+      defaultZone: http://localhost:8761/eureka
+    #是否向eureak注册
+    register-with-eureka: true
+    #是否检索其他服务
+    fetch-registry: true

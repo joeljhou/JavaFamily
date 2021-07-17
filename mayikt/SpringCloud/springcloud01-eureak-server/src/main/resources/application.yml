@@ -1,0 +1,17 @@
+server:
+  port: 8100
+eureka:
+  #实例
+  instance:
+    #服务的唯一标识
+    appname: springcloud-eureak-server
+    #注册中心ip地址
+    hostname: 127.0.0.1
+  #客户端
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    #是否向Eureka进行注册(集群的时候需要设置为true)
+    register-with-eureka: false
+    #是否检索其他服务
+    fetch-registry: false

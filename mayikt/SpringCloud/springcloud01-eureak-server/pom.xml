@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mayikt</groupId>
-    <artifactId>springcloud-eureak-server</artifactId>
+    <artifactId>springcloud01-eureak-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springcloud01-eureak-server</name>
     <description>Demo project for Spring Boot</description>

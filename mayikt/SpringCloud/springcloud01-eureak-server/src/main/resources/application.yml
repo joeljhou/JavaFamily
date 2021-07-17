@@ -1,10 +1,10 @@
 server:
-  port: 8100
+  port: 8761
 eureka:
   #实例
   instance:
     #服务的唯一标识
-    appname: springcloud-eureak-server
+    appname: EurekaService
     #注册中心ip地址
     hostname: 127.0.0.1
   #客户端

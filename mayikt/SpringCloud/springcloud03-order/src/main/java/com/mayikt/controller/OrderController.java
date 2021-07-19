@@ -21,8 +21,8 @@ public class OrderController {
     /**
      * 在Spring中有两种方式调用rest,feign(SpringCloud)
      */
-    @RequestMapping("/getOrder")
-    public String getOrder() {
+    @RequestMapping("/getOrderToMember")
+    public String getOrderToMember() {
         //有两种方式，一种是采用服务别名方式调用，另一种直接调用 使用别名去注册中心上获取对应的服务调用地址
         String memberUrl = "http://app-mayikt-member/getMember";
         String result = restTemplate.getForObject(memberUrl, String.class);

@@ -15,9 +15,10 @@ public class Config {
 
     /**
      * 如果使用rest方式以别名方式进行调用 依赖ribbon负载均衡器 @LoadBalanced
+     * //就是让restTemplate在请求时拥有负载均衡的能力
      */
     @Bean
-    @LoadBalanced //就是让restTemplate在请求时拥有负载均衡的能力
+    @LoadBalanced
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }

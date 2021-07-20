@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mayikt</groupId>
-    <artifactId>springcloud02-member</artifactId>
+    <artifactId>springcloud10-member</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springcloud02-member</name>
+    <name>springcloud10-member</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
@@ -47,11 +47,6 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
     </dependencies>
-    <!--springcloud openfeign客户端-->
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-openfeign</artifactId>
-    </dependency>
     <!--管理依赖-->
     <dependencyManagement>
         <dependencies>

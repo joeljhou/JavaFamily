@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author 周宇
  * @create 2021-07-17 22:46
+ * Rest方式调用
  */
 @RestController
 public class OrderController {

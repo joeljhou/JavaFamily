@@ -27,6 +27,7 @@ public class ExtRibbonController {
     /*==========存手写实现本地负载均衡==========*/
 
     //接口的请求总数
+    //使用原子计数器 因为线程安全 效率非常高 使用cas 无锁机制
     private int reqtCount = 1;
 
     @RequestMapping("/ribbonMember")

@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mayikt</groupId>
-    <artifactId>springcloud02-member</artifactId>
+    <artifactId>springcloud09-eureak-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springcloud02-member</name>
+    <name>springcloud09-eureak-server</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
@@ -41,18 +41,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
         </dependency>
-        <!--springcloud eureka-client 注册中心客户端-->
+        <!--springcloud eureka-server 注册中心服务-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <!--springcloud openfeign客户端-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
     </dependencies>
-
     <!--管理依赖-->
     <dependencyManagement>
         <dependencies>

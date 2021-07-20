@@ -1,9 +1,14 @@
 package com.mayikt.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 周宇
@@ -17,6 +22,9 @@ public class ZKOrderController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
     /**
      * 在Spring中有两种方式调用rest,feign(SpringCloud)
      */
@@ -29,5 +37,19 @@ public class ZKOrderController {
         return result;
     }
 
+    /**
+     * 获取注册中心上服务列表信息
+     */
+    @RequestMapping("/discoveryClientMember")
+    public List<String> discoveryClientMember() {
+        List<ServiceInstance> list = discoveryClient.getInstances("zk-member");
+        List<String> services = new ArrayList<>();
+        for (ServiceInstance serviceInstance : list) {
+            if (serviceInstance != null) {
+                services.add(serviceInstance.getUri().toString());
+            }
+        }
+        return services;
+    }
 
 }

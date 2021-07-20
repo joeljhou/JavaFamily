@@ -1,0 +1,19 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: consul-order
+  cloud:
+    consul:
+      #consul注册中心地址 端口
+      host: localhost
+      port: 8500
+      discovery:
+        #默认情况下，服务注册到注册中心 地址随机生成英文 例如："address": "LAPTOP-1RQ5L1O9"
+        #以这个ip地址注册到consul上面，服务地址直接为ip
+        hostname: 192.168.8.156
+        #强制使用ip注册到consul服务器上面
+        #prefer-ip-address: true
+        #打开心跳机制
+        heartbeat:
+          enabled: true

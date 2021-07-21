@@ -1,6 +1,7 @@
 package com.mayikt.api.service;
 
 import com.mayikt.api.entity.UserEntity;
+import com.mayikt.base.ResponseBase;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,5 +19,8 @@ public interface IMemberService {
     //代码实现存放在接口实现类里面
     @RequestMapping("/getMember")
     UserEntity getMember(@RequestParam("name") String name);
+
+    @RequestMapping("/getUserInfo")
+    ResponseBase getUserInfo();
 
 }

@@ -2,7 +2,6 @@ package com.mayikt.api.service;
 
 import com.mayikt.api.entity.UserEntity;
 import com.mayikt.base.ResponseBase;
-import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @create 2021-07-20 22:15
  * 会员服务接口
  */
-@FeignClient("app-mayikt-member")
 public interface IMemberService {
 
     //实体类存放在接口项目，还是存放在实现项目 实体类存放在接口项目里面

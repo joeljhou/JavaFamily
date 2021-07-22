@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mayikt</groupId>
-    <artifactId>springcloud13-config_client</artifactId>
+    <artifactId>springcloud12-config_client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springcloud13-config_client</name>
+    <name>springcloud12-config_client</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>

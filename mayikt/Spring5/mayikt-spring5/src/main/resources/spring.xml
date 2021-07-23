@@ -3,7 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--配置SpringBean对象-->
+    <!--配置SpringBean对象
+       bean的id不允许重复
+       bean的id命名格式一般为 类名称小写字母
+       class 类的完整路径地址 底层使用反射技术初始化这个对象
+    -->
     <bean id="userEntity" class="com.mayikt.entity.UserEntity"></bean>
 
 </beans>

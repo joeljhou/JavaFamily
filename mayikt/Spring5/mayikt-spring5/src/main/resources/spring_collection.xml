@@ -34,6 +34,17 @@
                 <value>02</value>
             </set>
         </property>
+        <!--注入list类型为对象类型 ref bean 引入对象-->
+        <property name="courseEntities">
+            <list>
+                <ref bean="courseEntity_java"></ref>
+                <ref bean="courseEntity_dashuju"></ref>
+            </list>
+        </property>
     </bean>
 
+    <!--java课程-->
+    <bean id="courseEntity_java" class="com.mayikt.entity.CourseEntity" p:name="mayikt-java"/>
+    <!--大数据课程-->
+    <bean id="courseEntity_dashuju" class="com.mayikt.entity.CourseEntity" p:name="mayikt-大数据"/>
 </beans>

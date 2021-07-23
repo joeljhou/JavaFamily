@@ -10,14 +10,18 @@ import java.util.Set;
  * @create 2021-07-23 22:00
  */
 public class StuEntity {
-    //1.数组属性
+    /**
+     * 1.数组属性
+     * 2.list集合属性
+     * 3.Map
+     * 4.Set
+     */
     private String[] arrays;
-    //2.list集合属性
     private List<String> list;
-    //3.Map
     private Map<String,String> map;
-    //4.Set
     private Set<String> set;
+
+    private List<CourseEntity> courseEntities;
 
     public void setArrays(String[] arrays) {
         this.arrays = arrays;
@@ -35,6 +39,10 @@ public class StuEntity {
         this.set = set;
     }
 
+    public void setCourseEntities(List<CourseEntity> courseEntities) {
+        this.courseEntities = courseEntities;
+    }
+
     @Override
     public String toString() {
         return "StuEntity{" +
@@ -42,6 +50,7 @@ public class StuEntity {
                 ", list=" + list +
                 ", map=" + map +
                 ", set=" + set +
+                ", courseEntities=" + courseEntities +
                 '}';
     }
 }

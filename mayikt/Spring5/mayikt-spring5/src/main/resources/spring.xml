@@ -6,6 +6,4 @@
     <!--配置SpringBean对象-->
     <bean id="userEntity" class="com.mayikt.entity.UserEntity"></bean>
 
-
-
 </beans>

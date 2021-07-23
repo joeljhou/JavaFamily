@@ -1,6 +1,10 @@
 package com.mayikt.factory;
 
 import com.mayikt.entity.UserEntity;
+import com.mayikt.utils.Dom4jClass;
+import org.dom4j.DocumentException;
+
+import java.io.IOException;
 
 /**
  * @author 周宇
@@ -8,8 +12,11 @@ import com.mayikt.entity.UserEntity;
  */
 public class UserFactory {
 
-    public static UserEntity getUserEntity(){
-        String classUrl = "com.mayikt.entity.UserEntity";
+    public static UserEntity getUserEntity() throws DocumentException, IOException {
+        //1.使用解析xml技术 解析spring.xml 配置文件 dom4j
+        String userClass = new Dom4jClass().getUserClass();
+        //2.获取 <bean id="" class=""></bean> 类完整路径地址
+        String classUrl = userClass;
         //3.使用反射技术初始化对象
         UserEntity userEntity = null;
         try {
@@ -21,5 +28,6 @@ public class UserFactory {
         }
         return userEntity;
     }
+
 
 }

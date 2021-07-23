@@ -26,7 +26,7 @@ public class Test01_BeanCreate_InternalInjection {
         //spring配置bean容器 注入 注解
         //new UserEntity()
         // 1.读取xml配置文件
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("user.xml");
         // 2.根据bean的id获取bean对象
         UserEntity userEntity = applicationContext.getBean("userEntity", UserEntity.class);
         System.out.println(userEntity);

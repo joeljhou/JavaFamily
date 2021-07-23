@@ -5,7 +5,7 @@ import com.mayikt.service.UserService;
  * @create 2021-07-23 12:51
  * 使用工厂模式创建对象
  */
-public class Test02_FactoryCreate {
+public class Test02_FactoryCreateBean {
     public static void main(String[] args) {
         UserService userService = new UserService();
         userService.addUser();

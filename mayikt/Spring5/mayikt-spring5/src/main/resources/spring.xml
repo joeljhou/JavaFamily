@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--配置SpringBean对象
-       bean的id不允许重复
-       bean的id命名格式一般为 类名称小写字母
-       class 类的完整路径地址 底层使用反射技术初始化这个对象
-    -->
-    <bean id="userEntity" class="com.mayikt.entity.UserEntity">
-
+    <!-- 注入属性外部bean -->
+    <bean id="memberService" class="com.mayikt.service.MemberService">
+        <property name="memberDao" ref="memberDao"/>
     </bean>
+    <bean id="memberDao" class="com.mayikt.dao.MemberDaoImpl"/>
+
+    <!--内部bean对象 很少使用这种方式-->
+    <bean id="empEntity1" class="com.mayikt.entity.EmpEntity">
+        <property name="name" value="mayikt"/>
+        <property name="age" value="22"/>
+        <!--嵌入部门bean-->
+        <property name="deptEntity">
+            <bean id="deptEntity" class="com.mayikt.entity.DeptEntity">
+                <property name="name" value="教育部门"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!--注入级联赋值-->
+    <bean id="empEntity2" class="com.mayikt.entity.EmpEntity">
+        <property name="name" value="mayikt"/>
+        <property name="age" value="22"/>
+        <!--级联赋值形式1-->
+        <property name="deptEntity" ref="deptEntity"/>
+        <!--级联赋值形式2-->
+        <property name="deptEntity.name" value="IT部门"/>
+    </bean>
+    <bean id="deptEntity" class="com.mayikt.entity.DeptEntity" p:name="教育部门"/>
 
 </beans>

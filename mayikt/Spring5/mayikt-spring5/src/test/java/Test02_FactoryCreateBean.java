@@ -7,7 +7,7 @@ import com.mayikt.service.UserService;
  */
 public class Test02_FactoryCreateBean {
     public static void main(String[] args) {
-        UserService userService = new UserService();
+        UserService userService = new UserService(); //调用 UserDaoFactory.getUserDao();
         userService.addUser();
     }
 }

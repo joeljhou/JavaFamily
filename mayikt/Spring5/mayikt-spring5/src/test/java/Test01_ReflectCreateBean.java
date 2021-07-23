@@ -6,9 +6,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * @author 周宇
  * @create 2021-07-23 11:18
- * SpringBean的创建过程 内部注入方式
+ * 反射机制创建SpringBean
  */
-public class Test01_BeanCreate_InternalInjection {
+public class Test01_ReflectCreateBean {
     public static void main(String[] args) {
         //反射机制 通过无产构造方法创建UserBean
         createUserBean();

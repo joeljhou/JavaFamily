@@ -6,9 +6,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * @author 周宇
  * @create 2021-07-23 21:56
- * bean注入集合类型属性
+ * 普通bean和工厂bean
  */
-public class Test06_BeanFactory {
+public class Test06_OrdinaryAndFactoryBean {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("beanfactory.xml");
         //普通Bean：在配置文件中定义什么类型与返回的类型需一致；

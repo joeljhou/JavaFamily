@@ -2,8 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="stuEntity" class="com.mayikt.entity.StuEntity">
         <!--数组类型注入 -->
@@ -47,4 +51,16 @@
     <bean id="courseEntity_java" class="com.mayikt.entity.CourseEntity" p:name="mayikt-java"/>
     <!--大数据课程-->
     <bean id="courseEntity_dashuju" class="com.mayikt.entity.CourseEntity" p:name="mayikt-大数据"/>
+
+
+    <!--对list公共部分进行提取 util-->
+    <bean id="stuEntity2" class="com.mayikt.entity.StuEntity">
+        <property name="list" ref="list"/>
+    </bean>
+
+    <!-- 提取公共部分 -->
+    <util:list id="list">
+        <value>mayikt01</value>
+        <value>mayikt02</value>
+    </util:list>
 </beans>

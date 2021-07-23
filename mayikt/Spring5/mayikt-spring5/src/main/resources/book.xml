@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--创建对象和set方法注入属性-->
+    <bean id="bookEntity1" class="com.mayikt.entity.BookEntity">
+        <property name="bookName" value="&lt;&lt;Code代码大全&gt;&gt; "/>
+        <property name="bookPrice" value="99.00"></property>
+    </bean>
+
+    <!--使用p标签注入属性-->
+    <bean id="bookEntity2" class="com.mayikt.entity.BookEntity"
+          p:bookName="Code代码大全" p:bookPrice="99.00"/>
+
+</beans>

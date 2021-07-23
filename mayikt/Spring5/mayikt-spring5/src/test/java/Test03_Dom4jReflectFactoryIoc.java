@@ -9,7 +9,7 @@ import java.io.IOException;
  * @create 2021-07-23 11:38
  * Dom4j+反射+工厂 手动实现ioc容器
  */
-public class Test03_Frame {
+public class Test03_Dom4jReflectFactoryIoc {
 
     /**
      * 1.使用解析xml技术 解析spring.xml 配置文件

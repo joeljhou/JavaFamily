@@ -8,6 +8,8 @@
        bean的id命名格式一般为 类名称小写字母
        class 类的完整路径地址 底层使用反射技术初始化这个对象
     -->
-    <bean id="userEntity" class="com.mayikt.entity.UserEntity"></bean>
+    <bean id="userEntity" class="com.mayikt.entity.UserEntity">
+
+    </bean>
 
 </beans>

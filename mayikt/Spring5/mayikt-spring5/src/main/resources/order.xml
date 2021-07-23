@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--有参构造函数注入属性-->
+    <bean id="orderEntity" class="com.mayikt.entity.OrderEntity">
+        <constructor-arg name="orderId" value="GB11024"/>
+        <constructor-arg name="orderName" value="輪船訂單"/>
+    </bean>
+
+    <bean id="orderEntity2" class="com.mayikt.entity.OrderEntity">
+        <constructor-arg index="0" value="GB11024"/>
+        <constructor-arg index="1" value="輪船訂單"/>
+    </bean>
+
+</beans>

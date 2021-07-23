@@ -12,4 +12,5 @@
 
     <!--注入bean对象的后置处理器-->
     <bean id="mayiktBeanPost" class="com.mayikt.bean.MayiktBeanPost"/>
+    <bean id="mayiktBeanPost02" class="com.mayikt.bean.MayiktBeanPost02"/>
 </beans>

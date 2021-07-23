@@ -10,4 +10,6 @@
         <property name="name" value="mayikt"/>
     </bean>
 
+    <!--注入bean对象的后置处理器-->
+    <bean id="mayiktBeanPost" class="com.mayikt.bean.MayiktBeanPost"/>
 </beans>

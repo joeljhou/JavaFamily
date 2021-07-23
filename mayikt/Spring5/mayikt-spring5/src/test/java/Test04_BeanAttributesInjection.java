@@ -21,7 +21,7 @@ public class Test04_BeanAttributesInjection {
         System.out.println(entity);
         System.out.println("=============注入属性内部bean Success=============");
 
-        //级联赋值
+        //级联赋值 需要提供get方法
         EmpEntity empEntity = applicationContext.getBean("empEntity2",EmpEntity.class);
         System.out.println(empEntity);
         System.out.println("=============级联赋值 Success=============");

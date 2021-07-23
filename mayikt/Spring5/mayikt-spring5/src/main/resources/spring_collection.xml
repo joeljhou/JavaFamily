@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="stuEntity" class="com.mayikt.entity.StuEntity">
+        <!--数组类型注入 -->
+        <property name="arrays">
+            <array>
+                <value>mayikt01</value>
+                <value>mayikt02</value>
+            </array>
+        </property>
+        <!--list-->
+        <property name="list">
+            <list>
+                <value>语文</value>
+                <value>数学</value>
+            </list>
+        </property>
+        <!--map-->
+        <property name="map">
+            <map>
+                <entry key="小余" value="23"/>
+                <entry key="小微" value="25"/>
+            </map>
+        </property>
+        <!--set-->
+        <property name="set">
+            <set>
+                <value>01</value>
+                <value>02</value>
+            </set>
+        </property>
+    </bean>
+
+</beans>

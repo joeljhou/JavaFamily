@@ -14,10 +14,4 @@ public class UserService {
         userDao.addUser();
     }
 
-    //使用工厂模式创建对象
-    public static void main(String[] args) {
-        UserService userService = new UserService();
-        userService.addUser();
-    }
-
 }

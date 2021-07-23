@@ -4,7 +4,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * @author 周宇
  * @create 2021-07-23 11:18
- * SpringBean的创建
+ * SpringBean的创建过程
  */
 public class Test01_BeanCreate {
     public static void main(String[] args) {

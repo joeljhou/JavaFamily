@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 /**
  * @author 周宇
@@ -41,5 +42,19 @@ public class OrderService {
         int i = orderInfoMapper.addOrderInfo();
         int result = 1 / j;
         return i;
+    }
+
+    //4.手动回滚
+    public int addOrderInfo02(int j) {
+        try {
+            int i = orderInfoMapper.addOrderInfo();
+            int result = 1 / j;
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            //手动回滚
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            return 0;
+        }
     }
 }

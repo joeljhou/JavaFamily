@@ -1,4 +1,4 @@
-package com.mayikt;
+package com.mayikt.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @create 2021-07-24 11:17
  */
 @Configuration
-@ComponentScan("com.mayikt.service")
+@ComponentScan(basePackages = {"com.mayikt.service","com.mayikt.aop"})
 public class MyConfig {
 
 }

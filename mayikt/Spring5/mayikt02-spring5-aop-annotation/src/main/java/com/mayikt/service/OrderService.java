@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderService {
     public String addOrder(){
+        System.out.println("addOrder");
         return "addOrder success";
     }
 }

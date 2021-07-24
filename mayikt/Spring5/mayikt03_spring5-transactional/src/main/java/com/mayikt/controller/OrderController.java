@@ -17,7 +17,7 @@ public class OrderController {
 
     @RequestMapping("/addOrder")
     public String addOrder(int j) {
-        int i = orderService.addOrderInfo(j);
+        int i = orderService.addOrderInfo03(j);
         return i <= 0 ? "fail" : "success";
     }
 

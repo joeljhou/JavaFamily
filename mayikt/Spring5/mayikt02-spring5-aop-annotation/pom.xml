@@ -44,7 +44,6 @@
             <version>1.6.1</version>
         </dependency>
 
-        <!--jdk11 对应aspectjweaver1.9.6-->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>

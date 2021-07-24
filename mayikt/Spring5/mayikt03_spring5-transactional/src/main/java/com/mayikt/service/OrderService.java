@@ -1,8 +1,10 @@
 package com.mayikt.service;
 
 import com.mayikt.mapper.OrderInfoMapper;
+import com.mayikt.utils.TransactionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -14,12 +16,29 @@ public class OrderService {
 
     @Autowired
     private OrderInfoMapper orderInfoMapper;
+    @Autowired
+    private TransactionUtils transactionUtils;
 
-    //声明式事务
-    @Transactional
+    //1.声明式事务
+    //@Transactional
+    //public int addOrderInfo(int j) {
+    //    TransactionStatus begin = null;
+    //    try {
+    //        //2.编程式事务
+    //        begin = transactionUtils.begin();
+    //        int i = orderInfoMapper.addOrderInfo();
+    //        //j 传入0 报错
+    //        int result = 1 / j;
+    //        transactionUtils.commit(begin);
+    //    } catch (Exception e) {
+    //        transactionUtils.rollback(begin);
+    //    }
+    //    return 1;
+    //}
+
+    //3.Aop实现 编程式事务
     public int addOrderInfo(int j) {
         int i = orderInfoMapper.addOrderInfo();
-        //j 传入0 报错
         int result = 1 / j;
         return i;
     }

@@ -1,6 +1,7 @@
 package com.mayikt.mapper;
 
 import org.apache.ibatis.annotations.Insert;
+import org.springframework.stereotype.Component;
 
 /**
  * @author 周宇

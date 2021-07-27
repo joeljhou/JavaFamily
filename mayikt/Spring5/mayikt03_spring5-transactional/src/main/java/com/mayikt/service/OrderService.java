@@ -5,6 +5,7 @@ import com.mayikt.utils.TransactionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
@@ -21,7 +22,8 @@ public class OrderService {
     private TransactionUtils transactionUtils;
 
     //1.声明式事务
-    @Transactional
+    // 如果存在一个事务，则支持当前事务。如果没有事务则开启一个新的事务
+    @Transactional(propagation = Propagation.REQUIRED)
     public int addOrderInfo01(int j) {
         orderInfoMapper.addOrderInfo();
         int result = 1 / j;

@@ -5,6 +5,7 @@ import com.mayikt.service.OrderService;
 /**
  * @author 周宇
  * @create 2021-07-27 22:10
+ * 需要代理的实际对象
  */
 public class OrderServiceImpl implements OrderService {
 

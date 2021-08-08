@@ -22,7 +22,6 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
  */
-//使用@EnableDiscoveryClient从注册中心获取接口地址
 @EnableDiscoveryClient
 @Configuration
 public class NacosDiscoveryConfiguration {

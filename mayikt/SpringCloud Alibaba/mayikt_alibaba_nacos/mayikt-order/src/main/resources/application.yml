@@ -1,10 +1,10 @@
 # 应用服务 WEB 访问端口
 server:
-  port: 8000
+  port: 8010
 # 应用名称
 spring:
   application:
-    name: mayikt-member
+    name: mayikt-order
   cloud:
     # Nacos帮助文档: https://nacos.io/zh-cn/docs/concepts.html
     nacos:

@@ -1,9 +1,10 @@
 package com.mayikt.service.order.openfeign;
 
-import com.mayikt.service.member.api.MemberService;
-import feign.Param;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.websocket.server.PathParam;
 
 /**
  * @author 周宇
@@ -18,6 +19,6 @@ public interface MemberServiceFeign {
      * @return
      */
     @GetMapping("/getUser")
-    String getUser(@Param("userId") Integer userId);
+    String getUser(@RequestParam("userId") Integer userId);
 
 }

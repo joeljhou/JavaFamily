@@ -1,11 +1,10 @@
 package com.mayikt.service;
 
 import com.mayikt.loadbalancer.LoadBalancer;
-import com.mayikt.loadbalancer.impl.RotationLoadBalancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.context.annotation.Bean;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -28,9 +27,11 @@ public class OrderService {
     @Autowired
     private LoadBalancer loadBalancer;
 
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
+
     /**
      * 订单服务调用会员服务
-     *
      * @return
      */
     @RequestMapping("/orderToMember")
@@ -43,6 +44,26 @@ public class OrderService {
         ServiceInstance serviceInstance = loadBalancer.getSingleAddres(instances);
         String result = restTemplate.getForObject(serviceInstance.getUri()+"/getUser", String.class);
         return "订单调用会员返回结果：" + result;
+    }
+
+
+    /**
+     * 基于Ribbon实现本地负载均衡
+     * @return
+     */
+    @RequestMapping("/orderToRibbonMember")
+    public Object orderToRibbonMember() {
+        String result = restTemplate.getForObject("http://mayikt-member/getUser", String.class);
+        return "订单调用会员返回结果：" + result;
+    }
+
+    /**
+     * LoadBalancerClient负载均衡器
+     * @return 底层默认原理是调用ribbon的实现客户端负载均衡器
+     */
+    @RequestMapping("/loadBalancerClient")
+    public Object loadBalancerClient() {
+        return loadBalancerClient.choose("mayikt-member");
     }
 
 }

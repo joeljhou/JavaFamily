@@ -1,6 +1,7 @@
 package com.mayikt.service.member.api.impl;
 
 import com.mayikt.service.member.api.MemberService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -9,8 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class MemberServiceImpl implements MemberService {
+
+    @Value("${server.port}")
+    private String serverPort;
+
     @Override
     public String getUser(Integer userId) {
-        return "我是会员服务";
+        return "我是会员服务,端口号为：" + serverPort;
     }
 }

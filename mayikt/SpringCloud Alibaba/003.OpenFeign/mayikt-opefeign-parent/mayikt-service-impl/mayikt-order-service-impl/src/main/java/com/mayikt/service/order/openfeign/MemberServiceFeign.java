@@ -4,8 +4,6 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.websocket.server.PathParam;
-
 /**
  * @author 周宇
  * @create 2021-08-09 2:52

@@ -10,14 +10,17 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class GateWayEntity {
+
     private Integer id;
+
     private String routeId;
+
     private String routeName;
+
     private String routePattern;
-    /**
-     * 路由类型
-     * 0的话 则从注册中心获取服务
-     */
+
     private String routeType;
+
     private String routeUrl;
+
 }

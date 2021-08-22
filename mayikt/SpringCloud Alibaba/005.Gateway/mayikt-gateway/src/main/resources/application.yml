@@ -43,8 +43,11 @@ spring:
         namespace: public
   #数据库连接
   datasource:
-    url: jdbc:mysql://localhost:3306/meite_gateWay?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/mayikt_gateWay?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+mybatis:
+  type-aliases-package: com.mayikt.entity
+  configuration:
+    map-underscore-to-camel-case: true

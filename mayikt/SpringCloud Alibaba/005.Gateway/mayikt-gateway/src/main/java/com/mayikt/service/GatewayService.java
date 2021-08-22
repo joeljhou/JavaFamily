@@ -30,8 +30,8 @@ public class GatewayService implements ApplicationEventPublisherAware {
     private ApplicationEventPublisher publisher;
     @Autowired
     private RouteDefinitionWriter routeDefinitionWriter;
-    //@Autowired
-    //private MayiktGatewayMapper mayiktGateway;
+    @Autowired
+    private MayiktGatewayMapper mayiktGatewayMapper;
 
     @Override
     public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
@@ -40,10 +40,10 @@ public class GatewayService implements ApplicationEventPublisherAware {
 
     public void initAllRoute() {
         // 从数据库查询配置的网关配置
-        //List<GateWayEntity> gateWayEntities = mayiktGateway.gateWayAll();
-        //for (GateWayEntity gw : gateWayEntities) {
-        //    loadRoute(gw);
-        //}
+        List<GateWayEntity> gateWayEntities = mayiktGatewayMapper.gateWayAll();
+        for (GateWayEntity gw : gateWayEntities) {
+            loadRoute(gw);
+        }
     }
 
     /**

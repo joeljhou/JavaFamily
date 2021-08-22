@@ -28,4 +28,12 @@ public class GatewayController {
         return gatewayService.loadRoute(gateWayEntity);
     }
 
+
+    @RequestMapping("/initAllRoute")
+    public String initAllRoute(){
+        //从数据库查询配置的网关配置
+        gatewayService.initAllRoute();
+        return "数据库加载路由网关 success";
+    }
+
 }

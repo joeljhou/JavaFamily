@@ -41,3 +41,10 @@ spring:
         server-addr: 127.0.0.1:8848
         # 注册到 nacos 的指定 namespace，默认为 public
         namespace: public
+  #数据库连接
+  datasource:
+    url: jdbc:mysql://localhost:3306/meite_gateWay?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+

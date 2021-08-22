@@ -8,29 +8,29 @@ spring:
   cloud:
     gateway:
       discovery:
+        #开启以服务id去注册中心上获取转发地址
         locator:
-          #开启以服务id去注册中心上获取转发地址
           enabled: true
       #配置路由规则
-      routes:
-        - id: mayikt
-          uri: http://www.mayikt.com/
-          predicates:
-            - Path=/mayikt/**
-        - id: member
-          #基于lb负载均衡形式转发
-          uri: lb://mayikt-member
-          predicates:
-            - Path=/member/**
-          filters:
-            - StripPrefix=1
-        - id: order
-          #基于lb负载均衡形式转发
-          uri: lb://mayikt-order
-          predicates:
-            - Path=/order/**
-          filters:
-            - StripPrefix=1
+#      routes:
+#        - id: mayikt
+#          uri: http://www.mayikt.com/
+#          predicates:
+#            - Path=/mayikt/**
+#        - id: member
+#          #基于lb负载均衡形式转发
+#          uri: lb://mayikt-member
+#          predicates:
+#            - Path=/member/**
+#          filters:
+#            - StripPrefix=1
+#        - id: order
+#          #基于lb负载均衡形式转发
+#          uri: lb://mayikt-order
+#          predicates:
+#            - Path=/order/**
+#          filters:
+#            - StripPrefix=1
     # Nacos帮助文档: https://nacos.io/zh-cn/docs/concepts.html
     nacos:
       discovery:

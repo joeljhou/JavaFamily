@@ -17,9 +17,12 @@ public class NacosController {
     @Value("${mayikt.name}")
     private String userName;
 
+    @Value("${server.port}")
+    private String serverPort;
+
     @RequestMapping("/getConfig")
     public String getConfig() {
-        return userName;
+        return userName + "，端口；" + serverPort;
     }
 
 }

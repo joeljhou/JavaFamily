@@ -15,6 +15,11 @@ public class OrderServiceimpl {
     @Autowired
     private MemberServiceFeign memberServiceFeign;
 
+    @RequestMapping("/")
+    public String member(){
+        return "订单服务";
+    }
+
     /**
      * 基于Feign客户端形式实现rpc远程调用
      *

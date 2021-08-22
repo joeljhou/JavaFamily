@@ -1,5 +1,6 @@
 package com.mayikt.controller;
 
+import com.mayikt.entity.GateWayEntity;
 import com.mayikt.service.GatewayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,14 @@ public class GatewayController {
 
     @RequestMapping("/synGatewayConfig")
     public String synGatewayConfig(){
-        return gatewayService.loadRoute();
+        GateWayEntity gateWayEntity = new GateWayEntity();
+        gateWayEntity.setId(1);
+        gateWayEntity.setRouteType("0");
+        gateWayEntity.setRouteUrl("mayikt-member");
+        gateWayEntity.setRouteId("member");
+        gateWayEntity.setRouteName("member");
+        gateWayEntity.setRoutePattern("/member/**");
+        return gatewayService.loadRoute(gateWayEntity);
     }
 
 }

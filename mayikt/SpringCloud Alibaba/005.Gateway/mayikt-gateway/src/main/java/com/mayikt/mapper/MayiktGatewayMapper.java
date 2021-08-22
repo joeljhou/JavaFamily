@@ -12,7 +12,6 @@ import java.util.List;
  * @author 周宇
  * @create 2021-08-23 0:55
  */
-@Component
 public interface MayiktGatewayMapper {
 
     @Select("SELECT ID AS ID, route_id as routeid, route_name as routeName,route_pattern as routePattern\n" +

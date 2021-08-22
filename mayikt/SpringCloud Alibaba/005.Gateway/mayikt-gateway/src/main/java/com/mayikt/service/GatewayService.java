@@ -16,8 +16,8 @@ public class GatewayService implements ApplicationEventPublisherAware {
     private ApplicationEventPublisher publisher;
     @Autowired
     private RouteDefinitionWriter routeDefinitionWriter;
-    @Autowired
-    private MayiktGatewayMapper mayiktGateway;
+    //@Autowired
+    //private MayiktGatewayMapper mayiktGateway;
 
 
     @Override

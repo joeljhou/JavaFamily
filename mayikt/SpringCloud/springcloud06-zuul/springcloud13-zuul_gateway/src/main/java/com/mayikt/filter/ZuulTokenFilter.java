@@ -4,6 +4,7 @@
 //import com.netflix.zuul.context.RequestContext;
 //import com.netflix.zuul.exception.ZuulException;
 //import org.apache.commons.lang.StringUtils;
+//import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 //import org.springframework.stereotype.Component;
 //
 //import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,7 @@
 // * @author 周宇
 // * @create 2021-07-23 0:57
 // */
-////@Component
+//@Component
 //public class ZuulTokenFilter extends ZuulFilter {
 //
 //    @Override
@@ -46,7 +47,7 @@
 //    // 过滤器类型 pre 表示在 请求之前进行拦截
 //    @Override
 //    public String filterType() {
-//        return "pre";
+//        return FilterConstants.PRE_TYPE;
 //    }
 //
 //}

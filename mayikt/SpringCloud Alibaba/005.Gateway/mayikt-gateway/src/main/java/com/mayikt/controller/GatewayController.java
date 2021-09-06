@@ -16,6 +16,9 @@ public class GatewayController {
     @Autowired
     private GatewayService gatewayService;
 
+    /**
+     * 同步网关路由配置
+     */
     @RequestMapping("/synGatewayConfig")
     public String synGatewayConfig(){
         GateWayEntity gateWayEntity = new GateWayEntity();
@@ -29,6 +32,9 @@ public class GatewayController {
     }
 
 
+    /**
+     * 加载数据库网关路由配置
+     */
     @RequestMapping("/initAllRoute")
     public String initAllRoute(){
         //从数据库查询配置的网关配置

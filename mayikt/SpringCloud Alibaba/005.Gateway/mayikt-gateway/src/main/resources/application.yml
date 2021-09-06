@@ -12,7 +12,7 @@ spring:
         locator:
           enabled: true
       #配置路由规则
-#      routes:
+      routes:
 #        - id: mayikt
 #          uri: http://www.mayikt.com/
 #          predicates:
@@ -31,6 +31,27 @@ spring:
 #            - Path=/order/**
 #          filters:
 #            - StripPrefix=1
+        #路由谓词工厂：https://cloud.spring.io/spring-cloud-gateway/reference/html/#gateway-request-predicates-factories
+        #1.匹配时间 After Before Between
+#        - id: my_after_route
+#          uri: http://www.mayikt.com/
+#          predicates:
+#            - Between=2017-01-20T17:42:47.789-07:00[America/Denver], 2022-01-21T17:42:47.789-07:00[America/Denver]
+        #2.匹配对应的host
+#        - id: my_host_route
+#          uri: https://www.bilibili.com/
+#          predicates:
+#            - Host=mybilibili.cn
+        #3.权重控制
+#        - id: weight_bilibili_high
+#          uri: https://www.bilibili.com/
+#          predicates:
+#            - Weight=group1, 8
+#        - id: weight_mayikt_low
+#          uri: http://www.mayikt.com/
+#          predicates:
+#            - Weight=group1, 2
+
     # Nacos帮助文档: https://nacos.io/zh-cn/docs/concepts.html
     nacos:
       discovery:

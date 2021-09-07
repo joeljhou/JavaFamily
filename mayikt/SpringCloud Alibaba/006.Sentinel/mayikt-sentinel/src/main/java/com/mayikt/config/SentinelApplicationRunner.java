@@ -19,13 +19,13 @@ import java.util.List;
 @Slf4j
 public class SentinelApplicationRunner implements ApplicationRunner {
 
-    private static final String GETORDER_GEIUSER_KEY = "getUser";
+    private static final String SENTINEL_KEY = "getUser";
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         List<FlowRule> rules = new ArrayList<>();
         FlowRule rule1 = new FlowRule();
-        rule1.setResource(GETORDER_GEIUSER_KEY);
+        rule1.setResource(SENTINEL_KEY);
         // QPS控制在1以内
         rule1.setCount(1);
         // QPS限流

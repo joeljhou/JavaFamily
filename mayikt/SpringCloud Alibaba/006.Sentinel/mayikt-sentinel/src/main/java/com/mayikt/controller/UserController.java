@@ -2,6 +2,8 @@ package com.mayikt.controller;
 
 import com.alibaba.csp.sentinel.Entry;
 import com.alibaba.csp.sentinel.SphU;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
@@ -23,7 +25,7 @@ public class UserController {
     @Value("${server.port}")
     private String serverPort;
 
-    private static final String GETORDER_GEIUSER_KEY = "getUser";
+    private static final String SENTINEL_KEY = "getUser";
 
     /**
      * 初始化路由策略
@@ -32,7 +34,7 @@ public class UserController {
     public String initFlowQpsRule() {
         List<FlowRule> rules = new ArrayList<FlowRule>();
         FlowRule rule1 = new FlowRule();
-        rule1.setResource(GETORDER_GEIUSER_KEY);
+        rule1.setResource(SENTINEL_KEY);
         // QPS控制在1以内
         rule1.setCount(1);
         // QPS限流
@@ -47,7 +49,7 @@ public class UserController {
     public String getUser() {
         Entry entry = null;
         try {
-            entry = SphU.entry(GETORDER_GEIUSER_KEY);
+            entry = SphU.entry(SENTINEL_KEY);
         } catch (Exception e) {
             return "当前频率访问次数过多，请稍后重试!";
         } finally {
@@ -56,6 +58,27 @@ public class UserController {
             }
         }
         return "mayikt：" + serverPort;
+    }
+
+
+    /**
+     * 注解形式配置管理Api限流
+     * @SentinelResource  value参数：流量规则资源名称
+     * blockHandler 限流/熔断出现异常执行的方法
+     * Fallback 服务的降级执行的方法
+     */
+    @SentinelResource(value = SENTINEL_KEY, blockHandler = "getOrderQpsException")
+    @RequestMapping("/getOrderAnnotation")
+    public String getOrderAnnotation() {
+        return "getOrder接口";
+    }
+
+    /**
+     * 被限流后返回的提示
+     */
+    public String getOrderQpsException(BlockException e) {
+        e.printStackTrace();
+        return "该接口已经被限流啦!";
     }
 
 }

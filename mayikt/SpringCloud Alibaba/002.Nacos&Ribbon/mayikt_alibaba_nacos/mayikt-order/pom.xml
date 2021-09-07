@@ -59,7 +59,7 @@
             </exclusions>
         </dependency>
     </dependencies>
-
+    <!--管理依赖-->
     <dependencyManagement>
         <dependencies>
             <dependency>

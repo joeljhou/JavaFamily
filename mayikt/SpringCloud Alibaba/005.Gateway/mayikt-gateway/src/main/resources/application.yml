@@ -15,24 +15,24 @@ spring:
       routes:
         - id: mayikt
           uri: http://www.mayikt.com/
-          predicates:
-            - Path=/mayikt/**
           filters:
             - StripPrefix=1
-#        - id: member
-#          #基于lb负载均衡形式转发
-#          uri: lb://mayikt-member
-#          predicates:
-#            - Path=/member/**
-#          filters:
-#            - StripPrefix=1
-#        - id: order
-#          #基于lb负载均衡形式转发
-#          uri: lb://mayikt-order
-#          predicates:
-#            - Path=/order/**
-#          filters:
-#            - StripPrefix=1
+          predicates:
+            - Path=/mayikt/**
+        - id: member
+          #基于lb负载均衡形式转发
+          uri: lb://mayikt-member
+          filters:
+            - StripPrefix=1
+          predicates:
+            - Path=/member/**
+        - id: order
+          #基于lb负载均衡形式转发
+          uri: lb://mayikt-order
+          filters:
+            - StripPrefix=1
+          predicates:
+            - Path=/order/**
         #路由谓词工厂：https://cloud.spring.io/spring-cloud-gateway/reference/html/#gateway-request-predicates-factories
         #1.匹配时间 After Before Between
 #        - id: my_after_route

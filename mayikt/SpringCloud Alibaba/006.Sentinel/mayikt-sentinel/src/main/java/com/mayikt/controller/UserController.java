@@ -69,10 +69,10 @@ public class UserController {
      * blockHandler 限流/熔断出现异常执行的方法
      * Fallback 服务的降级执行的方法
      */
-    @SentinelResource(value = "getAnnotationConsole", blockHandler = "getOrderQpsException")
-    @RequestMapping("/getAnnotationConsole")
-    public String getAnnotationConsole() {
-        return "getAnnotationConsole接口";
+    @SentinelResource(value = "getOrderAnnotationConsole", blockHandler = "getOrderQpsException")
+    @RequestMapping("/getOrderAnnotationConsole")
+    public String getOrderAnnotationConsole() {
+        return "getOrderAnnotationConsole接口";
     }
 
     /**
@@ -96,6 +96,23 @@ public class UserController {
         } catch (Exception e) {
         }
         return "getOrderThrad";
+    }
+
+    /**
+     * 基于RT模式实现熔断降级
+     */
+    @SentinelResource(value = "getOrderDowngradeRtType",fallback = "getOrderDowngradeRtTypeFallback")
+    @RequestMapping("/getOrderDowngradeRtType")
+    public String getOrderDowngradeRtType(){
+        try{
+            Thread.sleep(300);
+        }catch (Exception e){
+        }
+        return "getOrderDowngradeRtType";
+    }
+
+    public String getOrderDowngradeRtTypeFallback(){
+        return "服务降级啦，当前服务器请求次数过多，请稍后再试";
     }
 
 }

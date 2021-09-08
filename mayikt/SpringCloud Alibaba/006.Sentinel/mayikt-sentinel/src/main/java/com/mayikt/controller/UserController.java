@@ -67,10 +67,10 @@ public class UserController {
      * blockHandler 限流/熔断出现异常执行的方法
      * Fallback 服务的降级执行的方法
      */
-    @SentinelResource(value = SENTINEL_KEY, blockHandler = "getOrderQpsException")
-    @RequestMapping("/getOrderAnnotation")
-    public String getOrderAnnotation() {
-        return "getOrder接口";
+    @SentinelResource(value = "getAnnotationConsole", blockHandler = "getOrderQpsException")
+    @RequestMapping("/getAnnotationConsole")
+    public String getAnnotationConsole() {
+        return "getAnnotationConsole接口";
     }
 
     /**

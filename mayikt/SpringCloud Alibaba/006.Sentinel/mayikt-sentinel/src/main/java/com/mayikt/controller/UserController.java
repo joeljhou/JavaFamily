@@ -115,4 +115,11 @@ public class UserController {
         return "服务降级啦，当前服务器请求次数过多，请稍后再试";
     }
 
+
+    @SentinelResource(value = "getOrderSentinel", blockHandler = "getOrderQpsException")
+    @RequestMapping("/getOrderSentinel")
+    public String getOrderSentinel() {
+        return "getOrderSentinel";
+    }
+
 }

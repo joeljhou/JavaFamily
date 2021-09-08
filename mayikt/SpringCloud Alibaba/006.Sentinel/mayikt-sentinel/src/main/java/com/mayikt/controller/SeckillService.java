@@ -3,6 +3,7 @@ package com.mayikt.controller;
 import com.alibaba.csp.sentinel.Entry;
 import com.alibaba.csp.sentinel.EntryType;
 import com.alibaba.csp.sentinel.SphU;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowRuleManager;
@@ -34,7 +35,6 @@ public class SeckillService {
      * 秒杀抢购
      */
     @RequestMapping("/seckill")
-    //@SentinelResource(value = SEKILL_RULE, fallback = "seckillFallback", blockHandler = "seckillBlockHandler")
     public String seckill(Long userId, Long orderId) {
         try {
             Entry entry = SphU.entry(SEKILL_RULE, EntryType.IN, 1, userId);
@@ -42,6 +42,16 @@ public class SeckillService {
         } catch (Exception e) {
             return "当前用户访问过度频繁，请稍后重试!";
         }
+    }
+
+    /**
+     * 使用注解的方式实现热点参数限流秒杀
+     * 通过全局异常捕获对异常进程处理
+     */
+    @RequestMapping("/seckill1")
+    @SentinelResource(value = SEKILL_RULE, fallback = "seckillFallback", blockHandler = "seckillBlockHandler")
+    public String seckill1(Long userId, Long orderId) {
+        return "秒杀成功1";
     }
 
     // seckill?userId=123456&orderId=644064779

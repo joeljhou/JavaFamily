@@ -7,6 +7,7 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,7 @@ import java.util.List;
  * @author 周宇
  * @create 2021-09-08 2:13
  */
+@Slf4j
 @RestController
 public class UserController {
 
@@ -62,7 +64,7 @@ public class UserController {
 
 
     /**
-     * 注解形式配置管理Api限流
+     * 注解形式配置管理Api限流 阈值类型：QPS
      * @SentinelResource  value参数：流量规则资源名称
      * blockHandler 限流/熔断出现异常执行的方法
      * Fallback 服务的降级执行的方法
@@ -79,6 +81,21 @@ public class UserController {
     public String getOrderQpsException(BlockException e) {
         e.printStackTrace();
         return "该接口已经被限流啦!";
+    }
+
+    /**
+     * 阈值类型：并发线程数
+     * 每次最多只会有一个线程处理该业务逻辑，超出该阈值的情况下，直接拒绝访问
+     */
+    @SentinelResource(value = "getOrderThrad", blockHandler = "getOrderQpsException")
+    @RequestMapping("/getOrderThrad")
+    public String getOrderThrad(){
+        System.out.println(Thread.currentThread().getName());
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+        }
+        return "getOrderThrad";
     }
 
 }

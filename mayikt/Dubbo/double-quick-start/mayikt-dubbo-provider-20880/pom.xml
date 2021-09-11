@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mayikt-dubbo-provider</artifactId>
+    <artifactId>mayikt-dubbo-provider-20880</artifactId>
+
     <dependencies>
         <dependency>
             <groupId>org.mayikt</groupId>

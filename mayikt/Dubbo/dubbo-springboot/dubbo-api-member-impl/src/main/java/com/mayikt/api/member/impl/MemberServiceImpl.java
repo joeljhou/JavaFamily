@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
  * @create 2021-09-15 12:21
  */
 @Service
-@Component
 public class MemberServiceImpl implements IMemberService {
 
     //1、dubbo服务发布 采用 注解方式 使用Dubbo提供的 @Service 注解进行发布服务

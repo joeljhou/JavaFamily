@@ -4,7 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mayikt</groupId>
     <artifactId>dubbo-springboot</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>dubbo-api</module>
+        <module>dubbo-api-member-impl</module>
+        <module>dubbo-api-order-impl</module>
+    </modules>
     <name>dubbo-springboot</name>
     <description>dubbo-springboot</description>
 
@@ -24,25 +30,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--Dubbo-Springboot-->
+        <!--1.0版本 springboot-dubbo-starter 不兼容2.0-->
+        <!--2.0版本 dubbo-spring-boot-starter-->
         <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>${dubbo.starter.version}</version>
         </dependency>
-        <!--开源Zookeeper快速开发框架-->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-framework</artifactId>
-            <version>${curator-framework.version}</version>
-        </dependency>
-        <!--zookeeper-->
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>${zookeeper.version}</version>
-        </dependency>
-
         <!--test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

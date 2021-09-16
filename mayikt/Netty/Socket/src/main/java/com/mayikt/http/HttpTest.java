@@ -27,7 +27,7 @@ public class HttpTest {
                 //得到请求的内容，注意这里作两个判断非空和""都要，只判断null会有问题
                 while ((line = bufferedReader.readLine()) != null && !line.equals("")) {
                     stringBuilder.append(line).append("<br>");
-                   }
+                }
                 String result = stringBuilder.toString();
                 System.out.println(result);
                 //这里第二个参数表示自动刷新缓存

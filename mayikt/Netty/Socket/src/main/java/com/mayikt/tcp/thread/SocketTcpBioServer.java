@@ -1,4 +1,4 @@
-package com.mayikt.tcp.bio;
+package com.mayikt.tcp.thread;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -20,11 +20,20 @@ public class SocketTcpBioServer {
             serverSocket.bind(new InetSocketAddress(8080));
             System.out.println("开始等待接受数据...");
             final Socket accept = serverSocket.accept();
+
             while (true) {
-                int read = accept.getInputStream().read(bytes);
-                String result = new String(bytes).trim();
-                System.out.println("服务器端获取数据：" + result);
+                new Thread(() -> {
+                    try {
+                        int read = accept.getInputStream().read(bytes);
+                        String result = new String(bytes).trim();
+                        System.out.println("服务器端获取数据：" + result);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }).start();
             }
+            //使用多线程技术实现伪异步io
+            //缺点：消耗cpu服务器资源
         } catch (IOException e) {
             e.printStackTrace();
         }

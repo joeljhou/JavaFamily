@@ -1,4 +1,4 @@
-package com.mayikt.tcp.client;
+package com.mayikt.tcp;
 
 import java.io.BufferedReader;
 import java.io.IOException;

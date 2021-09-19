@@ -1,4 +1,4 @@
-package com.mayikt.udp.server;
+package com.mayikt.udp;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

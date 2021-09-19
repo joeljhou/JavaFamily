@@ -1,4 +1,4 @@
-package com.mayikt.tcp.server;
+package com.mayikt.tcp;
 
 import java.io.IOException;
 import java.io.PrintWriter;

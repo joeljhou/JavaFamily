@@ -1,6 +1,5 @@
 package com.mayikt.nio;
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.ServerSocketChannel;
@@ -42,6 +41,7 @@ public class SimulationNioTcpServer {
                     // 设置该socketChannel通道为fasle
                     socketChannel.configureBlocking(false);
                     listSocketChannel.add(socketChannel);
+                    System.out.println(Thread.currentThread().getName() + "——" + socketChannel.getLocalAddress() + "建立连接成功");
                 }
                 // 循环SocketChannel,检查每个SocketChannel中数据有传输数据
                 for (SocketChannel scl : listSocketChannel) {
@@ -58,6 +58,8 @@ public class SimulationNioTcpServer {
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
+                        listSocketChannel.remove(scl);
+                        System.out.println(Thread.currentThread().getName() + "——" + scl.getLocalAddress() + "断开连接");
                     }
                 }
             }

@@ -25,15 +25,15 @@ public class ServerHandler extends SimpleChannelInboundHandler {
         String request = byteBuf.toString(CharsetUtil.UTF_8);
 
         //响应代码
-        //System.out.println("request：" + request);
-        //ctx.writeAndFlush(Unpooled.copiedBuffer("平均突破3万月薪", CharsetUtil.UTF_8));
+        System.out.println("request：" + request);
+        ctx.writeAndFlush(Unpooled.copiedBuffer("平均突破3万月薪\n", CharsetUtil.UTF_8));
 
 
-        String[] split = request.split("\n");
-        for (int i = 0; i < split.length; i++) {
-            //响应代码
-            ctx.writeAndFlush(Unpooled.copiedBuffer("平均突破3万月薪", CharsetUtil.UTF_8));
-            System.out.println("request：" + split[i]);
-        }
+        //String[] split = request.split("\n");
+        //for (int i = 0; i < split.length; i++) {
+        //    //响应代码
+        //    ctx.writeAndFlush(Unpooled.copiedBuffer("平均突破3万月薪", CharsetUtil.UTF_8));
+        //    System.out.println("request：" + split[i]);
+        //}
     }
 }

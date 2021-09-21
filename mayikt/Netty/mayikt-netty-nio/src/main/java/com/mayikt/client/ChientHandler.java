@@ -20,7 +20,10 @@ public class ChientHandler extends SimpleChannelInboundHandler {
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ctx.writeAndFlush(Unpooled.copiedBuffer("请问每特教育第六期平均月薪突破多少", CharsetUtil.UTF_8));
+        for (int i = 0; i < 10; i++) {
+            //粘包问题：tcp长连接和缓冲区造成的
+            ctx.writeAndFlush(Unpooled.copiedBuffer("mayikt\n", CharsetUtil.UTF_8));
+        }
     }
 
     /**

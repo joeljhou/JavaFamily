@@ -23,9 +23,17 @@ public class ServerHandler extends SimpleChannelInboundHandler {
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf byteBuf = (ByteBuf) msg;
         String request = byteBuf.toString(CharsetUtil.UTF_8);
-        System.out.println("request:" + request);
 
         //响应代码
-        ctx.writeAndFlush(Unpooled.copiedBuffer("平均突破3万月薪", CharsetUtil.UTF_8));
+        //System.out.println("request：" + request);
+        //ctx.writeAndFlush(Unpooled.copiedBuffer("平均突破3万月薪", CharsetUtil.UTF_8));
+
+
+        String[] split = request.split("\n");
+        for (int i = 0; i < split.length; i++) {
+            //响应代码
+            ctx.writeAndFlush(Unpooled.copiedBuffer("平均突破3万月薪", CharsetUtil.UTF_8));
+            System.out.println("request：" + split[i]);
+        }
     }
 }

@@ -5,5 +5,5 @@ package com.mayikt.service;
  * @create 2021-07-28 0:10
  */
 public interface MemberService {
-    public void getMember();
+    void getMember();
 }

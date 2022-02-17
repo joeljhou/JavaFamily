@@ -10,6 +10,6 @@ import java.util.Vector;
 public class Vector_ {
     public static void main(String[] args) {
         //初始容量10 容量增量(自定义) 扩容默认是2倍
-        Vector<Integer> vector = new Vector<>();
+        Vector<Integer> vector = new Vector<Integer>();
     }
 }

@@ -70,7 +70,7 @@ public class Linked<E> {
 
     //向链表头部添加元素
     public void addFirst(E e) {
-        Node<E> newNode = new Node<>(e);   //要插入的节点对象
+        Node<E> newNode = new Node<E>(e);   //要插入的节点对象
         newNode.next = first;              //下一节点指向之前的头节点
         first = newNode;                   //改变头结点
         //first = new Node<E>(e,first);    等价上述代码
@@ -79,7 +79,7 @@ public class Linked<E> {
 
     //向链表尾部插入元素
     public void addLast(E e) {
-        Node<E> newNode = new Node<>(e);   //要插入的节点对象
+        Node<E> newNode = new Node<E>(e);   //要插入的节点对象
         Node<E> temp = this.first;         //临时节点——>循环找到最后一个节点
         while (temp.next != null) {
             temp = temp.next;
@@ -172,7 +172,7 @@ public class Linked<E> {
             addLast(element);     //向链表尾部插入元素
         } else {
             //在非空节点 succ 之后插入元素 e
-            Node<E> newNode = new Node<>(element);   //要插入的节点对象
+            Node<E> newNode = new Node<E>(element);   //要插入的节点对象
             Node<E> succ = node(index - 1);      //获取指定下标的前一个元素
             succ.next = newNode;                     //前一个元素指向要插入的新节点
             newNode.next = succ.next;                //新节点链接下一个节点，形成链

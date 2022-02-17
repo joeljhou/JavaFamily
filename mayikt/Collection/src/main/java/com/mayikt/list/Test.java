@@ -12,7 +12,7 @@ public class Test {
 
     //定义一个全局ArrayList集合,当两个线程同时修改时>抛出并发修改异常
     //private static List<String> globalList = new ArrayList<>();
-    private static CopyOnWriteArrayList<String> globalList = new CopyOnWriteArrayList<>();
+    private static CopyOnWriteArrayList<String> globalList = new CopyOnWriteArrayList<String>();
 
     public static void main(String[] args) {
         //并发修改异常
@@ -43,6 +43,8 @@ public class Test {
 
     //打印数据
     public static void print() {
-        globalList.forEach(System.out::println);
+        for (String global : globalList) {
+            System.out.println(global);
+        }
     }
 }

@@ -141,7 +141,7 @@ public class HashMap7<K, V> implements Map_<K, V> {
     }
 
     /**
-     * 根据需要初始化哈希种子
+     * 根据需要初始化哈希种子 绝大多数情况下返回false
      */
     final boolean initHashSeedAsNeeded(int capacity) {
         //当前的替代哈希
@@ -149,12 +149,12 @@ public class HashMap7<K, V> implements Map_<K, V> {
         boolean useAltHashing = sun.misc.VM.isBooted() &&
                 (capacity >= HashMap7.Holder.ALTERNATIVE_HASHING_THRESHOLD);
         boolean switching = currentAltHashing ^ useAltHashing;
-        if (switching) {
-            //随机哈希种子生成
-            hashSeed = useAltHashing
-                    ? sun.misc.Hashing.randomHashSeed(this)
-                    : 0;
-        }
+        //if (switching) {
+        //    //随机哈希种子生成
+        //    hashSeed = useAltHashing
+        //            ? sun.misc.Hashing.randomHashSeed(this)
+        //            : 0;
+        //}
         return switching;
     }
 
@@ -166,9 +166,9 @@ public class HashMap7<K, V> implements Map_<K, V> {
     final int hash(Object k) {
         int h = 0;
         //为string类型的key，单独提供 murmur-hash 算法，但是在多核CPU上性能不太好，JDK1.8就废弃了
-        if (0 != h && k instanceof String) {
-            return sun.misc.Hashing.stringHash32((String) k);
-        }
+        //if (0 != h && k instanceof String) {
+        //    return sun.misc.Hashing.stringHash32((String) k);
+        //}
         h ^= k.hashCode();
         h ^= (h >>> 20) ^ (h >>> 12);
         return h ^ (h >>> 7) ^ (h >>> 4);
@@ -274,7 +274,9 @@ public class HashMap7<K, V> implements Map_<K, V> {
             return;
         }
         Entry_[] newTable = new Entry_[newCapacity];
+        //转移数据到newTable
         transfer(newTable, initHashSeedAsNeeded(newCapacity));
+        //改变引用为新表
         table = newTable;
         threshold = (int) Math.min(newCapacity * loadFactor, MAXIMUM_CAPACITY + 1);
     }
@@ -283,14 +285,22 @@ public class HashMap7<K, V> implements Map_<K, V> {
      * 将所有条目从当前表转移到新表
      */
     void transfer(Entry_[] newTable, boolean rehash) {
-        int newCapacity = newTable.length;
+        int newCapacity = newTable.length;              //新表容器大小
+        //遍历之前表容器 桶
         for (Entry_<K, V> e : table) {
+            //遍历桶下的链表
             while (null != e) {
-                Entry_<K, V> next = e.next;
-                if (rehash) {
+                Entry_<K, V> next = e.next;             //保存下一个节点
+                if (rehash) {                           //是否重新散列 计算hash
                     e.hash = null == e.key ? 0 : hash(e.key);
                 }
-                int i = indexFor(e.hash, newCapacity);
+                int i = indexFor(e.hash, newCapacity);  //重新计算桶下标
+                /**
+                 * 情况1：没有发生hash碰撞 当前newTable[i]无值
+                 *      e 表示当前节点 的 next 下一个节点指向为 null，桶的首节点设置为e
+                 * 情况2，发生hash碰撞情况 当前newTable[i]有值 头插法形成链
+                 *      e 表示当前节点 的 next 指向首节点newTable[i]，桶的首节点设置为e
+                 */
                 e.next = newTable[i];
                 newTable[i] = e;
                 e = next;
@@ -379,7 +389,6 @@ public class HashMap7<K, V> implements Map_<K, V> {
             value = newValue;
             return oldValue;
         }
-
         public final boolean equals(Object o) {
             if (!(o instanceof Map.Entry))
                 return false;

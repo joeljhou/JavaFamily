@@ -6,7 +6,7 @@ import java.util.Queue;
  * @author 周宇
  * @create 2022-02-19 0:46
  */
-public class Test {
+public class BinarySearchTreeTest {
     public static void main(String[] args) {
         //BinarySearchTree<Integer, String> binarySearchTree = new BinarySearchTree();
         //binarySearchTree.put(1, "冰墩墩");

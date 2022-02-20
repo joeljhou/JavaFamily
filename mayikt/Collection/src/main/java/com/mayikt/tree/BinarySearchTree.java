@@ -1,10 +1,6 @@
 package com.mayikt.tree;
 
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**

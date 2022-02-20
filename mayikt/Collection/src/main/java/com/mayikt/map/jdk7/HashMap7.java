@@ -39,7 +39,7 @@ public class HashMap7<K, V> implements Map_<K, V> {
      */
     private int size;
     /**
-     * 扩容阈值 实际键值映射的数量（初始容量 * 加载因子0.75）
+     * 扩容阈值 要调整大小的下一个大小值（初始容量 * 加载因子0.75）
      */
     private int threshold;
     /**
@@ -114,6 +114,7 @@ public class HashMap7<K, V> implements Map_<K, V> {
         this(initialCapacity, DEFAULT_LOAD_FACTOR);
     }
 
+    //构造一个具有默认初始容量 (16) 和默认加载因子 (0.75) 的空 HashMap
     public HashMap7() {
         this(DEFAULT_INITIAL_CAPACITY, DEFAULT_LOAD_FACTOR);
     }
@@ -175,12 +176,12 @@ public class HashMap7<K, V> implements Map_<K, V> {
     }
 
     /**
-     * 返回哈希码 h 的索引
+     * 返回哈希码 hash 的索引
      */
-    static int indexFor(int h, int length) {
+    static int indexFor(int hash, int length) {
         //length(2的幂)-1的值 转化为二进制每一位都是1
         //保证按&运算 快速拿到下标 且 分布均匀
-        return h & (length - 1);
+        return hash & (length - 1);
     }
 
     @Override
@@ -265,10 +266,11 @@ public class HashMap7<K, V> implements Map_<K, V> {
         return null == entry ? null : entry.getValue();
     }
 
-    //扩容 调整大小
+    //数组扩容 调整大小
     void resize(int newCapacity) {
         Entry_[] oldTable = table;
         int oldCapacity = oldTable.length;
+        //保证最大容量为小于扩等于 1<<30
         if (oldCapacity == MAXIMUM_CAPACITY) {
             threshold = Integer.MAX_VALUE;
             return;
@@ -389,6 +391,7 @@ public class HashMap7<K, V> implements Map_<K, V> {
             value = newValue;
             return oldValue;
         }
+
         public final boolean equals(Object o) {
             if (!(o instanceof Map.Entry))
                 return false;

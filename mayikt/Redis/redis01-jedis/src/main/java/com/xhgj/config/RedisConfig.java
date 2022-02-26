@@ -4,7 +4,6 @@ import io.lettuce.core.RedisException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -15,7 +14,6 @@ import javax.annotation.PostConstruct;
  * @create 2022-02-26 13:02
  */
 @Configuration
-@PropertySource("application.properties")
 public class RedisConfig {
 
     /**
@@ -29,6 +27,12 @@ public class RedisConfig {
      */
     @Value("${spring.redis.port}")
     private int port;
+
+    /**
+     * Redis服务器连接密码
+     */
+    @Value("${spring.redis.password}")
+    private String password;
 
     /**
      * 连接池最大连接数（使用负值表示没有限制）
@@ -76,7 +80,7 @@ public class RedisConfig {
             config.setTestOnCreate(false);//创建时是否测试有效，默认false 生产环境设建议设置成true
             config.setBlockWhenExhausted(true);//当连接池jedis无可用资源时是否等待资源，默认true
             config.setJmxEnabled(true);//启用pool的jmx管理功能，默认true
-            jedisPool = new JedisPool(config, host, port, timeout);
+            jedisPool = new JedisPool(config, host, port, timeout, password);
         } catch (Exception e) {
             throw new RedisException("初始化redisPool失败");   //抛出异常
         }

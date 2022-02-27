@@ -38,7 +38,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
         </dependency>
-
+        <!--Google Java核心增强库-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.1.1-jre</version>
+        </dependency>
         <!--boot-test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

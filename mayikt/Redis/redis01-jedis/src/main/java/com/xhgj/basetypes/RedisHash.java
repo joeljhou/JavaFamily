@@ -1,6 +1,7 @@
 package com.xhgj.basetypes;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
@@ -9,6 +10,7 @@ import redis.clients.jedis.JedisPool;
  * @create 2022-02-27 1:22
  * 操作Hash类型
  */
+@Component
 public class RedisHash {
 
     public final static String RS_HASH_NS = "rh:";

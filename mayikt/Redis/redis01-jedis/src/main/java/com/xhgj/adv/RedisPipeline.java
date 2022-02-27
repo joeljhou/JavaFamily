@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * @author 周宇
  * @create 2022-02-28 1:47
+ * Pipline属于客户端行为 不能保证原子性
  */
 @Component
 public class RedisPipeline {

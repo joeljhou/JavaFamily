@@ -10,22 +10,37 @@ import java.util.Arrays;
 /**
  * @author 周宇
  * @create 2022-03-02 2:21
+ * 基于redis的一个限流功能
  */
 @Component
 public class RedisLua {
 
-    public final static String RS_LUA_NS = "rla:";
+    public final static String RS_LUA_NS = "rlilf:";
 
+    /**
+     * 第一次使用incr对KEY(某个IP作为KEY)加一，如果是第一次访问，使用expire设置一个超时时间，
+     * 这个超时时间作为Value的第一个参数传入，如果现在递增的数目大于输入的第二个Value参数，返回失败标记，否则成功。
+     * redis的超时时间到了，这个Key消失，又可以访问
+     * local num = redis.call('incr',KEYS[1])
+     * if tonumber(num) == 1 then
+     *      redis.call('expire',KEY[1],ARGV[1])
+     *      return 1
+     * elseif tonumber(num) > tonumber(ARGV[2]) then
+     *      return 0
+     * else
+     *      return 1
+     * end
+     */
     public final static String LUA_SCRIPTS =
             "local num = redis.call('incr',KEYS[1])\n" +
-                    "if tonumber(num) == 1 then\n" +
-                    "\tredis.call('expire',KEY[1],ARGV[1])\n" +
-                    "\treturn 1\n" +
-                    "elseif tonumber(num) > tonumber(ARGV[2]) then\n" +
-                    "else \n" +
-                    "\treturn 1\n" +
-                    "end";
-
+            "if tonumber(num) == 1 then\n" +
+            "\tredis.call('expire',KEY[1],ARGV[1])\n" +
+            "\treturn 1\n" +
+            "elseif tonumber(num) > tonumber(ARGV[2]) then\n" +
+            "\treturn 0\n"+
+            "else \n" +
+            "\treturn 1\n" +
+            "end";
 
     @Autowired
     private JedisPool jedisPool;

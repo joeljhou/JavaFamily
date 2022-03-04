@@ -1,0 +1,27 @@
+server:
+  port: 8010
+spring:
+  application:
+    #配置全局应用名称
+    name: app-mayikt-order
+eureka:
+  #客户端
+  client:
+    service-url:
+      #注册地址
+      #defaultZone: http://localhost:8761/eureka
+      #集群注册地址
+      defaultZone: http://localhost:8761/eureka,http://localhost:8762/eureka
+    #是否向eureak注册
+    register-with-eureka: true
+    #是否检索其他服务
+    fetch-registry: true
+    #缓存清单的更新时间 默认30s
+    registry-fetch-interval-seconds: 30
+  # 心跳检测检测与续约时间
+  # 测试时将值设置设置小些，保证服务关闭后注册中心能及时踢出服务
+  instance:
+    ###Eureka客户端向服务端发送心跳的时间间隔，单位为秒（客户端告诉服务端自己会按照该规则）
+    lease-renewal-interval-in-seconds: 1
+    ####Eureka服务端在收到最后一次心跳之后等待的时间上限，单位为秒，超过则剔除（客户端告诉服务端按照此规则等待自己）
+    lease-expiration-duration-in-seconds: 2

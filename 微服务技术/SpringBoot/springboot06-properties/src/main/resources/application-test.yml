@@ -1,0 +1,5 @@
+mayikt:
+  name: test.mayiky
+  age: ${random.int(10,28)}
+  info: test.mayikt
+  address: ${address.info:www.mayikt.com}

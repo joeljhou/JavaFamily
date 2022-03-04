@@ -1,0 +1,50 @@
+###服务启动端口号
+server:
+  port: 8010
+  tomcat:
+    #最大线程数
+    threads:
+      max: 10
+###服务名称(服务注册到eureka名称)
+spring:
+  application:
+    name: app-mayikt-order
+###服务注册到eureka地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+    ###因为该应用为注册中心，不会注册自己
+    register-with-eureka: true
+    ###是否需要从eureka上获取注册信息
+    fetch-registry: true
+
+
+###设置feign客户端超时时间
+#ribbon:
+#  ###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+#  ReadTimeout: 1000
+#  ###指的是建立连接后从服务器读取到可用资源所用的时间。
+#  ConnectTimeout: 1000
+feign:
+  #开启Hystrix断路器
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        #设置全局超时时间，读取超时时间(feign的配置会覆盖掉ribbon)
+        connectTimeout: 1000
+        readTimeout: 1000
+#设置hystrix超时时间
+#hystrix:
+#  command:
+#    default:
+#      execution:
+        #hystrix禁止服务超时时间
+#        timeout:
+#          enabled: false
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 1000

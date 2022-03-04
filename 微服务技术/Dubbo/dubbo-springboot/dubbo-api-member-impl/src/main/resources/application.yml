@@ -1,0 +1,17 @@
+# 服务器端口号
+server:
+  port: 8000
+# dubbo 注册中心名称
+dubbo:
+  application:
+    name: member
+  # 采用dubbo协议，指定发布端口号
+  protocol:
+    name: dubbo
+    port: 20880
+  # dubbo 注册中心地址
+  registry:
+    address: zookeeper://127.0.0.1:2181
+  # dubbo 实现类扫包范围
+  scan:
+    base-packages: com.mayikt.api.member.impl

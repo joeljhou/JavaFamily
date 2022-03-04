@@ -1,0 +1,9 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: zk-member
+  #注册到zookeeper地址
+  cloud:
+    zookeeper:
+      connect-string: 127.0.0.1:2181

@@ -1,0 +1,21 @@
+server:
+  port: 8762
+eureka:
+  #实例
+  instance:
+    #服务的唯一标识
+    appname: app-mayikt-eureak
+    #注册中心ip地址
+    hostname: 127.0.0.1
+  #客户端
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+    #是否向Eureka进行注册(集群的时候需要设置为 true)
+    register-with-eureka: true
+    #是否检索其他服务
+    fetch-registry: true
+  server:
+    #本地环境关闭自我保护机制，保证不可用服务及时剔除
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000

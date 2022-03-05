@@ -28,9 +28,11 @@ public class Demo2_DES {
 }
 
 class BothDES {
-    String algorithm = "DES";             //表示DES算法
-    String secretFile = Demo2_DES.class.getResource("/").getPath() + "SecretKey.dat";  //秘钥
-    String dataFile = Demo2_DES.class.getResource("/").getPath() + "fileData.dat";     //保存加密的文件
+    String algorithm = "DES";//表示DES算法
+    //随机秘钥文件
+    String secretFile = Demo2_DES.class.getResource("/").getPath() + "SecretKey.dat";
+    //加密数据文件
+    String dataEncryptFile = Demo2_DES.class.getResource("/").getPath() + "dataEncryptFile.dat";
 
     //构造函数 生成随机密码秘钥
     public BothDES() throws NoSuchAlgorithmException {
@@ -102,7 +104,7 @@ class BothDES {
         Cipher cipher = Cipher.getInstance(algorithm);  //Cipher用于执行加密的类，根据算法
         cipher.init(Cipher.ENCRYPT_MODE, dKey);         //加密还是解密 传递key
         byte[] fdata = cipher.doFinal(data);            //执行加密
-        this.writeFile(fdata, this.dataFile);           //写入文件
+        this.writeFile(fdata, this.dataEncryptFile);           //写入文件
         return true;
     }
 
@@ -113,7 +115,7 @@ class BothDES {
         Key dKey = this.getKey();
         Cipher cipher = Cipher.getInstance(algorithm);  //Cipher用于执行加密的类，根据算法
         cipher.init(Cipher.DECRYPT_MODE, dKey);         //设定解密
-        byte[] fData = cipher.doFinal(this.readFile(this.dataFile));       //执行解密
+        byte[] fData = cipher.doFinal(this.readFile(this.dataEncryptFile));       //执行解密
         return new String(fData);
     }
 }

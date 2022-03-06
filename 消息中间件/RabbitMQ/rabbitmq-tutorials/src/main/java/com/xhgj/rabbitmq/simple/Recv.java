@@ -41,6 +41,5 @@ public class Recv {
         //5.设置Channel 监听队列
         //1.队列名称 2.是否自动确认 3.消费者要监听的队列
         channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
-
     }
 }

@@ -1,8 +1,7 @@
-package com.xhgj.rabbitmq.java;
+package com.xhgj.rabbitmq.simple;
 
 import com.rabbitmq.client.*;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**

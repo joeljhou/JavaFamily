@@ -1,4 +1,4 @@
-package com.xhgj.rabbitmq.java;
+package com.xhgj.rabbitmq.simple;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.hspedu</groupId>
-    <artifactId>IOStream</artifactId>
+    <artifactId>iostream</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>

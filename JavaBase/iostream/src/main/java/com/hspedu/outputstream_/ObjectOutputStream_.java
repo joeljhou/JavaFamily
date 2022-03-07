@@ -1,6 +1,5 @@
 package com.hspedu.outputstream_;
 
-import com.hspedu.outputstream_.Dog;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;

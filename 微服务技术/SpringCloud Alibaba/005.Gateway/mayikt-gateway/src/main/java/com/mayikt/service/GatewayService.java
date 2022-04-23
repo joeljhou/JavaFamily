@@ -55,7 +55,7 @@ public class GatewayService implements ApplicationEventPublisherAware {
         PredicateDefinition predicate = new PredicateDefinition();
         FilterDefinition filterDefinition = new FilterDefinition();
         Map<String, String> filterParams = new HashMap<>(8);
-            // 如果配置路由type为0的话 则从注册中心获取服务
+        // 如果配置路由type为0的话 则从注册中心获取服务
         URI uri = null;
         if (gateWayEntity.getRouteType().equals("0")) {
             uri = UriComponentsBuilder.fromUriString("lb://" + gateWayEntity.getRouteUrl() + "/").build().toUri(); //"lb://mayikt-member"
